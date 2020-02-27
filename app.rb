@@ -14,3 +14,14 @@ after { puts }                                                              #
 
 events_table = DB.from(:events)
 rsvps_table = DB.from(:rsvps)
+
+get "/" do
+    puts "params: #{params}"
+
+    pp events_table.all.to_a
+    @events = events_table.all.to_a
+
+    view "events"
+end 
+
+# All the html framework is from layout.erb from <%= yield %> in the last container in there. It has to be called layout.erb
